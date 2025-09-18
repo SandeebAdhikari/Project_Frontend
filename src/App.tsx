@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import TopFlims from "./pages/TopFlims";
+import TopFlims from "./pages/MainPage";
 
 function App() {
   return (

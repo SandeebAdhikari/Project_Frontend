@@ -1,0 +1,63 @@
+import { useEffect, useState } from "react";
+import FlimsCard from "../components/FlimsCard";
+import ActorCard from "../components/ActorCard";
+
+type Film = {
+  category: string;
+  film_id: number;
+  rented: number;
+  title: string;
+};
+
+type Actor = {
+  first_name: string;
+  Actor_id: number;
+  last_name: string;
+};
+
+const MainPage = () => {
+  const [films, setFilms] = useState<Film[]>([]);
+  const [actors, setActors] = useState<Actor[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    Promise.all([
+      fetch("http://localhost:4000/api/films/top-films/"),
+      fetch("http://localhost:4000/api/actors/top-actors/"),
+    ])
+      .then(async ([filmsRes, actorsRes]) => {
+        if (!filmsRes.ok) throw new Error("Error fetching films");
+        if (!actorsRes.ok) throw new Error("Error fetching actors");
+
+        const filmsData: Film[] = await filmsRes.json();
+        const actorsData: Actor[] = await actorsRes.json();
+
+        setFilms(filmsData);
+        setActors(actorsData);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching data:", err);
+        setError("Failed to load data");
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <p>Loading films...</p>;
+  }
+
+  if (error) {
+    return <p style={{ color: "red" }}>{error}</p>;
+  }
+
+  return (
+    <div className="flex flex-col md:flex-row md:justify-between lg:flex-row lg:justify-between w-full">
+      <FlimsCard films={films} label="Top 5 Rented Films" />
+      <ActorCard Actors={actors} label="Top 5 Actors" />
+    </div>
+  );
+};
+
+export default MainPage;
