@@ -18,13 +18,13 @@ const FlimsCard: React.FC<ActorCardProps> = ({ Actors, label }) => {
     <div className="max-w-sm mx-auto p-4">
       <div
         onClick={() => setOpen(!open)}
-        className="bg-black/20 shadow-lg rounded-2xl p-4 cursor-pointer transition"
+        className="bg-black/20 shadow-lg rounded-2xl p-4 cursor-pointer transition text-center"
       >
         <h2 className="text-xl font-bold text-white-800">{label}</h2>
       </div>
 
       {open && (
-        <div className="mt-4 bg-black/20 p-4 rounded-2xl shadow-inner transition-all duration-500">
+        <div className="mt-4 bg-black/20 p-4 rounded-2xl shadow-inner transition-all duration-500 text-center">
           {Actors.length === 0 ? (
             <p className="text-gray-500">No Actors found</p>
           ) : (
@@ -32,11 +32,11 @@ const FlimsCard: React.FC<ActorCardProps> = ({ Actors, label }) => {
               {Actors.map((Actor) => (
                 <div
                   key={Actor.Actor_id}
-                  className=" border-b-black text-center hover:bg-black hover:text-white hover:rounded-xl"
+                  className=" border-b-black hover:bg-black hover:text-white hover:rounded-xl"
                 >
                   <div className="text-white font-semibold cursor-pointer ">
-                    {Actor.first_name}
-                  </div>{" "}
+                    {Actor.first_name} {Actor.last_name}
+                  </div>
                 </div>
               ))}
             </div>
