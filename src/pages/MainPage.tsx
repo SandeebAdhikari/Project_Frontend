@@ -7,12 +7,15 @@ type Film = {
   film_id: number;
   rented: number;
   title: string;
+  release_year: number;
+  rating: string;
 };
 
 type Actor = {
+  actor_id: number;
   first_name: string;
-  Actor_id: number;
   last_name: string;
+  film_count: number;
 };
 
 const MainPage = () => {
@@ -53,9 +56,9 @@ const MainPage = () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row md:justify-between lg:flex-row lg:justify-between w-full">
+    <div className="flex flex-col sm:mx-16 sm:flex-row">
       <FlimsCard films={films} label="Top 5 Rented Films" />
-      <ActorCard Actors={actors} label="Top 5 Actors" />
+      <ActorCard actors={actors} label="Top 5 Actors" />
     </div>
   );
 };
