@@ -15,7 +15,7 @@ interface ActorCardProps {
 }
 
 const ActorCard: React.FC<ActorCardProps> = ({ actors, label }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
     <div className="sm:w-1/2 mt-4 p-4">

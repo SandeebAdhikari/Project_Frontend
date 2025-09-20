@@ -26,7 +26,7 @@ const NavBar = () => {
       <div
         className={`${
           open ? "block" : "hidden"
-        } sm:flex flex flex-col sm:flex-row text-center sm:gap-5 absolute sm:static top-14 right-4 bg-black/20 sm:bg-transparent rounded-lg p-2 sm:p-0`}
+        } sm:flex flex flex-col sm:flex-row text-center sm:gap-5 absolute sm:static top-14 right-4 bg-gray-950 sm:bg-gray-900 rounded-lg p-2 sm:p-0`}
       >
         {navItems.map(({ path, label, icon: Icon }) => (
           <NavLink
@@ -36,7 +36,7 @@ const NavBar = () => {
               `flex items-center gap-2 font-bold rounded-xl px-4 py-2 transition 
               ${
                 isActive
-                  ? "bg-gray-900 text-white"
+                  ? "bg-gray-900 sm:bg-gray-950 text-white"
                   : "hover:bg-gray-900 hover:text-white"
               }`
             }
