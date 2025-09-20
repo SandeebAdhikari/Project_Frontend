@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import FlimsCard from "../components/FlimsCard";
-import ActorCard from "../components/ActorCard";
+import TopFiveFlimsCard from "../components/TopFiveFlimsCard";
+import TopActorCard from "../components/TopActorCard";
 
 type Film = {
   category: string;
@@ -16,6 +16,7 @@ type Actor = {
   first_name: string;
   last_name: string;
   film_count: number;
+  rental_count: number;
 };
 
 const MainPage = () => {
@@ -57,8 +58,8 @@ const MainPage = () => {
 
   return (
     <div className="flex flex-col sm:mx-16 sm:flex-row">
-      <FlimsCard films={films} label="Top 5 Rented Films" />
-      <ActorCard actors={actors} label="Top 5 Actors" />
+      <TopFiveFlimsCard films={films} label="Top 5 Rented Films" />
+      <TopActorCard actors={actors} label="Top 5 Actors" />
     </div>
   );
 };
