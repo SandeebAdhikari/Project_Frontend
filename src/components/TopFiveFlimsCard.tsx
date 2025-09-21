@@ -33,7 +33,7 @@ const FlimsCard: React.FC<FlimCardProps> = ({ films, label }) => {
       </div>
 
       {open && (
-        <div className="bg-black/20 p-2 rounded-b-2xl shadow-inner transition-all duration-500">
+        <div className="bg-black/20 p-2 rounded-b-2xl shadow-inner transition-all duration-500 cursor-pointer">
           {films.length === 0 ? (
             <p className="text-gray-500">No films found</p>
           ) : (
