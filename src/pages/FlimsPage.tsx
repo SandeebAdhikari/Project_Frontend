@@ -42,7 +42,7 @@ const FilmsPage = () => {
   });
 
   return (
-    <div className="py-6 sm:mx-22">
+    <div className="p-6 sm:mx-22">
       <div className="mb-6 flex flex-col sm:flex-row gap-4">
         <div className="flex-1">
           <div className="relative">

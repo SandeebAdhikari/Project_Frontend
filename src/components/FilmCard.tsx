@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Clock, DollarSign } from "lucide-react";
 
 type Film = {
@@ -79,9 +80,12 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
         </div>
       </div>
       <div className="flex gap-2 mt-2">
-        <button className="flex-1 border border-gray-700 bg-gray-950 p-1 rounded-lg cursor-pointer">
+        <Link
+          to={`/films/${film.film_id}`}
+          className="flex-1 border border-gray-700 bg-gray-950 p-1 rounded-lg cursor-pointer text-center"
+        >
           View Details
-        </button>
+        </Link>
         <button className="flex-1 border border-gray-700 p-1 rounded-lg cursor-pointer">
           Rent Out
         </button>
