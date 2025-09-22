@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div className="bg-gradient-to-bl from-gray-700 via-gray-800 to-gray-950 min-h-screen">
       <NavBar />
-      <div className="pt-22">
+      <div className="pt-24">
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/films" element={<FlimsPage />} />
