@@ -12,7 +12,7 @@ const NavBar = () => {
   ];
 
   return (
-    <div className=" p-4 sm:mx-16 flex justify-between items-center rounded-lg relative ">
+    <div className="fixed p-6 sm:px-16  w-full flex justify-between items-center rounded-lg z-50 ">
       <div className="flex font-bold text-2xl items-center">
         <Film size={52} className="text-gray-950" />
         <div className="flex flex-col items-start">
@@ -33,7 +33,7 @@ const NavBar = () => {
       <div
         className={`${
           open ? "block" : "hidden"
-        } sm:flex flex flex-col sm:flex-row text-center sm:gap-5 absolute sm:static top-14 right-4 gap-1 rounded-lg p-2 sm:p-0 bg-gradient-to-br from-gray-700 via-gray-800 border border-gray-500 sm:border-none sm:bg-none z-50`}
+        } sm:flex flex flex-col sm:flex-row text-center sm:gap-5 fixed sm:static top-14 right-4 gap-1 rounded-lg p-2 sm:p-0 bg-gradient-to-br from-gray-700 via-gray-800 border border-gray-500 sm:border-none sm:bg-none`}
       >
         {navItems.map(({ path, label, icon: Icon }) => (
           <NavLink

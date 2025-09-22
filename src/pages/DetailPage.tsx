@@ -37,7 +37,7 @@ const FilmDetail: React.FC = () => {
   if (!film) return <p className="text-white">Loading...</p>;
 
   return (
-    <div className="flex flex-col sm:mt-24 m-6 sm:mx-20 sm:flex-row text-white gap-6 sm:gap-10">
+    <div className="flex flex-col sm:mt-20 m-6 sm:mx-16 sm:flex-row text-white gap-6 sm:gap-10">
       <div className="flex justify-center">
         <div className="flex flex-col items-center justify-center w-74 h-106 sm:w-84 sm:h-130 rounded-xl bg-gradient-to-t from-gray-700 via-gray-800 to-gray-950">
           <div className="flex items-center justify-center w-14 h-14 mx-auto rounded-full mb-2 bg-gray-700 ">

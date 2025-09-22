@@ -57,7 +57,7 @@ const MainPage = () => {
   }
 
   return (
-    <div className="flex flex-col sm:mx-16 sm:flex-row">
+    <div className="flex flex-col sm:mx-12 sm:flex-row">
       <TopFiveFlimsCard films={films} label="Top 5 Rented Films" />
       <TopActorCard actors={actors} label="Top 5 Actors" />
     </div>
