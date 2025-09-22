@@ -42,12 +42,12 @@ const FilmsPage = () => {
   });
 
   return (
-    <div className="p-6 sm:mx-22">
+    <div className="p-6 sm:mx-15">
       <div className="mb-6 flex flex-col sm:flex-row gap-4">
         <div className="flex-1">
           <div className="relative">
             <Search
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 "
               size={20}
             />
             <input
@@ -55,14 +55,14 @@ const FilmsPage = () => {
               placeholder="Search films..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-3 py-2 shadow shadow-gray-400 rounded-md border border-gray-700 bg-gray-900 text-white placeholder-gray-400 focus:outline-none"
+              className="w-full pl-10 pr-3 py-2  rounded-md border border-gray-700 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 text-white placeholder-gray-400 focus:outline-none"
             />
           </div>
         </div>
         <select
           value={searchType}
           onChange={(e) => setSearchType(e.target.value)}
-          className="w-full shadow shadow-gray-400 sm:w-[180px] px-4 py-2 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none "
+          className="w-full  sm:w-[180px] px-4 py-2 rounded-md border border-gray-700 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 text-white focus:outline-none "
         >
           <option value="film">By Film Name</option>
           <option value="actor">By Actor</option>

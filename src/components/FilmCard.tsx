@@ -31,15 +31,15 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
   const shown = actorsArray.slice(0, 2).join(", ");
   const remaining = actorsArray.length - 2;
   return (
-    <div className="border border-gray-700 p-4 rounded-lg bg-gray-900 text-white hover:scale-105 shadow hover:shadow-md shadow-gray-400">
+    <div className=" p-4 rounded-lg  bg-gradient-to-tl from-gray-700 via-gray-800 to-gray-950 text-white hover:scale-105  hover:shadow-md shadow-gray-400">
       <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold">{film.title}</h2>
-        <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-gray-700 text-gray-200">
+        <h2 className="text-xl font-bold text-gray-400">{film.title}</h2>
+        <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-gray-700 text-gray-400">
           {film.rating}
         </span>
       </div>
-      <p className="text-sm text-gray-400 mt-2">{film.description}</p>
-      <div className="flex justify-between mt-10 text-gray-400">
+      <p className="text-sm text-gray-500 mt-2">{film.description}</p>
+      <div className="flex justify-between mt-10 text-gray-500">
         <div className="flex items-center gap-1">
           <Clock size={18} />
           {film.length} min
@@ -50,18 +50,18 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
         </div>
       </div>
 
-      <div className="mt-4 font-bold">
-        Categories:
+      <div className="mt-4 font-bold ">
+        <h2 className="text-gray-400">Categories:</h2>
         <div className="mt-[1px]">
-          <span className="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-gray-700 text-gray-200">
+          <span className="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-gray-800 text-gray-500 hover:bg-gray-900 cursor-pointer">
             {film.category}
           </span>
         </div>
       </div>
 
       <div className="mt-2 font-bold">
-        Featured Actor:
-        <div className="mt-1 text-sm font-medium text-gray-400">
+        <h2 className="text-gray-400">Cast:</h2>
+        <div className="mt-1 text-sm font-medium text-gray-500">
           {expanded ? (
             actorsArray.join(", ")
           ) : (
@@ -82,11 +82,11 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
       <div className="flex gap-2 mt-2">
         <Link
           to={`/films/${film.film_id}`}
-          className="flex-1 border border-gray-700 bg-gray-950 p-1 rounded-lg cursor-pointer text-center"
+          className="flex-1 border border-gray-700 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 hover:scale-105 p-1 rounded-lg cursor-pointer text-center"
         >
           View Details
         </Link>
-        <button className="flex-1 border border-gray-700 p-1 rounded-lg cursor-pointer">
+        <button className="flex-1 border border-gray-800 hover:scale-105 p-1 rounded-lg cursor-pointer">
           Rent Out
         </button>
       </div>

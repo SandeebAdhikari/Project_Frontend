@@ -7,7 +7,7 @@ import FilmDetail from "./pages/DetailPage";
 
 const App = () => {
   return (
-    <div className="bg-gray-900 min-h-screen">
+    <div className="bg-gradient-to-bl from-gray-700 via-gray-800 to-gray-950 min-h-screen">
       <NavBar />
       <Routes>
         <Route path="/" element={<MainPage />} />
