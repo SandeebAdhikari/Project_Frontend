@@ -21,8 +21,8 @@ const ActorCard: React.FC<ActorCardProps> = ({ actors, label }) => {
     <div className="sm:w-1/2 mt-4 p-4">
       <div
         onClick={() => setOpen(!open)}
-        className={`bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 flex flex-col items-center justify-center md:h-24 space-x-3 p-6 cursor-pointer transition-all duration-300
-        ${open ? "rounded-t-2xl" : "rounded-2xl"}`}
+        className={`bg-gradient-to-br border-l-1 border-b-1 border-gray-500 from-gray-700 via-gray-800 to-gray-950 flex flex-col items-center justify-center md:h-24 space-x-3 p-6 cursor-pointer transition-all duration-300
+        ${open ? "rounded-t-2xl " : "rounded-2xl "}`}
       >
         <div className="flex gap-2">
           <Star className="w-7 h-7 sm:w-7 sm:h-7 lg:w-8 lg:h-8 font-bold text-gray-400" />
@@ -34,7 +34,7 @@ const ActorCard: React.FC<ActorCardProps> = ({ actors, label }) => {
       </div>
 
       {open && (
-        <div className="bg-black/20 p-2 rounded-b-2xl shadow-inner transition-all duration-500 cursor-pointer">
+        <div className="bg-black/20 p-2 rounded-b-2xl shadow-inner transition-all duration-500 cursor-pointer border-r-1  border-gray-500">
           {actors.length === 0 ? (
             <p className="text-gray-500">No actors found</p>
           ) : (

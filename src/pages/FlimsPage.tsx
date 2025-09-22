@@ -55,14 +55,14 @@ const FilmsPage = () => {
               placeholder="Search films..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-3 py-2  rounded-md border border-gray-700 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 text-white placeholder-gray-400 focus:outline-none"
+              className="w-full pl-10 pr-3 py-2  rounded-md  border-r-1 border-b-1 border-gray-500 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 text-white placeholder-gray-400 focus:outline-none"
             />
           </div>
         </div>
         <select
           value={searchType}
           onChange={(e) => setSearchType(e.target.value)}
-          className="w-full  sm:w-[180px] px-4 py-2 rounded-md border border-gray-700 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 text-white focus:outline-none "
+          className="w-full  sm:w-[180px] px-4 py-2 rounded-md border-r-1 border-b-1 border-gray-500 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 text-white focus:outline-none "
         >
           <option value="film">By Film Name</option>
           <option value="actor">By Actor</option>

@@ -31,7 +31,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
   const shown = actorsArray.slice(0, 2).join(", ");
   const remaining = actorsArray.length - 2;
   return (
-    <div className=" p-4 rounded-lg  bg-gradient-to-tl from-gray-700 via-gray-800 to-gray-950 text-white hover:scale-105  hover:shadow-md shadow-gray-400">
+    <div className=" p-4 rounded-lg border-r-1 border-b-1 border-gray-500 bg-gradient-to-tl from-gray-700 via-gray-800 to-gray-950 text-white hover:scale-105  hover:shadow-md shadow-gray-400">
       <div className="flex justify-between items-center">
         <h2 className="text-xl font-bold text-gray-400">{film.title}</h2>
         <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-gray-700 text-gray-400">
@@ -82,11 +82,11 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
       <div className="flex gap-2 mt-2">
         <Link
           to={`/films/${film.film_id}`}
-          className="flex-1 border border-gray-700 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 hover:scale-105 p-1 rounded-lg cursor-pointer text-center"
+          className="flex-1  border-r-1 border-b-1 border-gray-700 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 hover:scale-105 p-1 rounded-lg cursor-pointer text-center"
         >
           View Details
         </Link>
-        <button className="flex-1 border border-gray-800 hover:scale-105 p-1 rounded-lg cursor-pointer">
+        <button className="flex-1 border border-gray-800  hover:scale-105 p-1 rounded-lg cursor-pointer">
           Rent Out
         </button>
       </div>
