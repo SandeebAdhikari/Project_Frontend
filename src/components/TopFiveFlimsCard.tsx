@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TrendingUp } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type Film = {
   category: string;
@@ -39,8 +40,9 @@ const FlimsCard: React.FC<FlimCardProps> = ({ films, label }) => {
           ) : (
             <div>
               {films.map((film, index) => (
-                <div
+                <Link
                   key={film.film_id}
+                  to={`/films/${film.film_id}`}
                   className="flex justify-between p-4 hover:bg-gray-950 hover:rounded-xl sm:h-24 sm:text-xl"
                 >
                   <div className="flex items-center gap-3">
@@ -66,7 +68,7 @@ const FlimsCard: React.FC<FlimCardProps> = ({ films, label }) => {
                       <p className="text-xs">rentals</p>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           )}
