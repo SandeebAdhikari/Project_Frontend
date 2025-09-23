@@ -112,7 +112,7 @@ const FilmDetail: React.FC = () => {
                 key={idx}
                 className="inline-flex items-center px-3 py-1 text-sm font-medium rounded-full bg-gray-800 text-gray-300 hover:bg-gray-700 cursor-pointer"
               >
-                {actor.trim()}
+                {actor}
               </span>
             ))}
           </div>

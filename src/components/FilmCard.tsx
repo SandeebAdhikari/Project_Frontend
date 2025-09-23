@@ -86,7 +86,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
         >
           View Details
         </Link>
-        <button className="flex-1 border border-gray-800  hover:scale-105 p-1 rounded-lg cursor-pointer">
+        <button className="flex-1 border border-gray-800  hover:scale-105 hover:bg-gray-700 p-1 rounded-lg cursor-pointer">
           Rent Out
         </button>
       </div>

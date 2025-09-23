@@ -28,15 +28,19 @@ const FilmsPage = () => {
   }, []);
 
   const filteredFilms = films.filter((film) => {
+    const searchLower = searchTerm.toLowerCase();
+
     if (searchType === "film") {
-      return film.title.toLowerCase().includes(searchTerm.toLowerCase());
+      return film.title.toLowerCase().includes(searchLower);
     } else if (searchType === "actor") {
-      return film.actors
-        .join(" ")
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase());
+      const actorsArray: string[] = Array.isArray(film.actors)
+        ? film.actors
+        : typeof film.actors === "string"
+        ? (film.actors as string).split(",").map((a: string) => a.trim())
+        : [];
+      return actorsArray.join(" ").toLowerCase().includes(searchLower);
     } else if (searchType === "genre") {
-      return film.category.toLowerCase().includes(searchTerm.toLowerCase());
+      return film.category.toLowerCase().includes(searchLower);
     }
     return true;
   });

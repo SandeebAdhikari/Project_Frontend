@@ -170,7 +170,7 @@ const Customers = () => {
         <button
           disabled={meta.page <= 1}
           onClick={() => fetchCustomers(meta.page - 1)}
-          className="px-3 py-1 font-semibold rounded disabled:opacity-50 border-r-1 border-b-1 border-gray-500  text-gray-400 hover:text-gray-300 hover:cursor-pointer hover:border"
+          className="px-3 py-1 font-semibold rounded disabled:opacity-50 border-r-1 border-b-1 border-gray-500  text-gray-200 hover:text-gray-100 hover:cursor-pointer hover:border"
         >
           Prev
         </button>
