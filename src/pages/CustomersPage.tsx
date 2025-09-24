@@ -79,7 +79,11 @@ const Customers = () => {
             className="w-full pl-10 pr-3 py-2 rounded-md  bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 text-gray-400 placeholder-gray-400 focus:outline-none border-r-1 border-b-1 border-gray-500"
           />
         </div>
+        <label htmlFor="searchType" className="sr-only">
+          Search Type
+        </label>
         <select
+          id="searchType"
           value={searchType}
           onChange={(e) => setSearchType(e.target.value)}
           className="w-full sm:w-[180px] px-4 py-2 rounded-md bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 text-gray-400 focus:outline-none border-r-1 border-b-1 border-gray-500"
@@ -137,18 +141,30 @@ const Customers = () => {
                   <td className="px-4 py-2">{customer.totalRentals}</td>
                   <td className="px-4 py-2">
                     <div className="flex items-center gap-2">
-                      <button className="p-2 rounded-md  border-r-1 border-b-1 border-gray-500 hover:bg-gray-700">
+                      <button
+                        className="p-2 rounded-md  border-r-1 border-b-1 border-gray-500 hover:bg-gray-700"
+                        title="View Customer"
+                      >
                         <Eye size={14} />
                       </button>
-                      <button className="p-2 rounded-md  border-r-1 border-b-1 border-gray-500 hover:bg-gray-700">
+                      <button
+                        className="p-2 rounded-md  border-r-1 border-b-1 border-gray-500 hover:bg-gray-700"
+                        title="Edit Customer"
+                      >
                         <Edit size={14} />
                       </button>
                       {customer.activeRentals > 0 && (
-                        <button className="p-2 rounded-md  border-r-1 border-b-1 border-gray-500 hover:bg-gray-700">
+                        <button
+                          className="p-2 rounded-md  border-r-1 border-b-1 border-gray-500 hover:bg-gray-700"
+                          title="View Active Rentals"
+                        >
                           <UserCheck size={14} />
                         </button>
                       )}
-                      <button className="p-2 rounded-md  border-r-1 border-b-1 border-gray-500 text-gray-400 hover:bg-gray-900">
+                      <button
+                        className="p-2 rounded-md  border-r-1 border-b-1 border-gray-500 text-gray-400 hover:bg-gray-900"
+                        title="Delete Customer"
+                      >
                         <Trash2 size={14} />
                       </button>
                     </div>

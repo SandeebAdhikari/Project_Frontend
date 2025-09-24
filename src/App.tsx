@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import FlimsPage from "./pages/FlimsPage";
 import CustomersPage from "./pages/CustomersPage";
 import FilmDetail from "./pages/DetailPage";
+import RentOutPage from "./pages/RentOutPage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/films" element={<FlimsPage />} />
           <Route path="/films/:id" element={<FilmDetail />} />
           <Route path="/customers" element={<CustomersPage />} />
+          <Route path="/rentals/:id" element={<RentOutPage />} />
         </Routes>
       </div>
     </div>

@@ -63,7 +63,11 @@ const FilmsPage = () => {
             />
           </div>
         </div>
+        <label htmlFor="searchType" className="sr-only">
+          Search Type
+        </label>
         <select
+          id="searchType"
           value={searchType}
           onChange={(e) => setSearchType(e.target.value)}
           className="w-full  sm:w-[180px] px-4 py-2 rounded-md border-r-1 border-b-1 border-gray-500 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 text-white focus:outline-none "

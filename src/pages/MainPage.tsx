@@ -53,7 +53,7 @@ const MainPage = () => {
   }
 
   if (error) {
-    return <p style={{ color: "red" }}>{error}</p>;
+    return <p className="error-message">{error}</p>;
   }
 
   return (

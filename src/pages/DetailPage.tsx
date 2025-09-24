@@ -84,10 +84,18 @@ const FilmDetail: React.FC = () => {
             <Play className="mr-2 h-4 w-4" />
             Watch Trailer
           </button>
-          <button className="flex px-3 py-2 rounded-lg hover:bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 cursor-pointer items-center">
+          <button
+            className="flex px-3 py-2 rounded-lg hover:bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 cursor-pointer items-center"
+            title="Add to favorites"
+            aria-label="Add to favorites"
+          >
             <Heart className="w-5 h-5" />
           </button>
-          <button className="flex px-3 py-2 rounded-lg hover:bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 cursor-pointer items-center">
+          <button
+            className="flex px-3 py-2 rounded-lg hover:bg-gradient-to-br from-gray-600 via-gray-700 to-gray-800 cursor-pointer items-center"
+            title="Share"
+            aria-label="Share"
+          >
             <Share2 className="w-5 h-5" />
           </button>
         </div>
