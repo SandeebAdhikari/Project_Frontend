@@ -26,13 +26,14 @@ type Film = {
 const FilmDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [film, setFilm] = useState<Film | null>(null);
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/films/${id}`)
+    fetch(`${apiUrl}/api/films/${id}`)
       .then((res) => res.json())
       .then((data) => setFilm(data))
       .catch((err) => console.error(err));
-  }, [id]);
+  }, [id, apiUrl]);
 
   if (!film) return <p className="text-white">Loading...</p>;
 

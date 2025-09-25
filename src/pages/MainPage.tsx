@@ -24,11 +24,12 @@ const MainPage = () => {
   const [actors, setActors] = useState<Actor[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     Promise.all([
-      fetch("http://localhost:4000/api/films/top-films/"),
-      fetch("http://localhost:4000/api/actors/top-actors/"),
+      fetch(`${apiUrl}/api/films/top-films`),
+      fetch(`${apiUrl}/api/actors/top-actors`),
     ])
       .then(async ([filmsRes, actorsRes]) => {
         if (!filmsRes.ok) throw new Error("Error fetching films");
@@ -46,7 +47,7 @@ const MainPage = () => {
         setError("Failed to load data");
         setLoading(false);
       });
-  }, []);
+  }, [apiUrl]);
 
   if (loading) {
     return <p>Loading films...</p>;

@@ -6,18 +6,19 @@ import { useEffect, useState } from "react";
 const RentOutPage = () => {
   const { id } = useParams();
   const [film, setFilm] = useState<Film | null>(null);
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/films/${id}`)
+    fetch(`${apiUrl}/api/films/${id}`)
       .then((res) => res.json())
       .then((data: Film) => setFilm(data))
       .catch((err) => console.error("Error fetching film:", err));
-  }, [id]);
+  }, [apiUrl, id]);
 
   if (!film) return <p>Loading film...</p>;
 
   return (
-    <div className=" sm:flex-row p-6 sm:p-4 sm:mx-16 ">
+    <div className="flex flex-col sm:flex-row sm:gap-5 p-6 sm:p-4 sm:mx-16 ">
       <div className="flex flex-col sm:w-1/2 p-6 rounded-lg border-r-1 border-b-1 border-gray-500 bg-gradient-to-tl from-gray-700 via-gray-800 to-gray-950">
         <div className="flex font-bold  border-gray-700 items-center gap-1">
           <span className="text-xl sm:text-3xl font-bold text-gray-400">
@@ -64,7 +65,7 @@ const RentOutPage = () => {
           </div>
         </div>
       </div>
-      <div className="mt-6 flex flex-col sm:w-1/2 p-6 rounded-lg border-r-1 border-b-1 border-gray-500 bg-gradient-to-tl from-gray-700 via-gray-800 to-gray-950">
+      <div className="mt-6 flex flex-col sm:mt-0 sm:w-1/2 p-6 rounded-lg border-r-1 border-b-1 border-gray-500 bg-gradient-to-tl from-gray-700 via-gray-800 to-gray-950">
         <div></div>
       </div>
     </div>

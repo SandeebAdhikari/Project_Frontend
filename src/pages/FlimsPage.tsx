@@ -19,13 +19,14 @@ const FilmsPage = () => {
   const [films, setFilms] = useState<Film[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchType, setSearchType] = useState("film");
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/films/all-films")
+    fetch(`${apiUrl}/api/films/all-films`)
       .then((res) => res.json())
       .then((data: Film[]) => setFilms(data))
       .catch((err) => console.error("Error fetching films:", err));
-  }, []);
+  }, [apiUrl]);
 
   const filteredFilms = films.filter((film) => {
     const searchLower = searchTerm.toLowerCase();

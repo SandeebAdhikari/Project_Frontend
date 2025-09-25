@@ -23,11 +23,12 @@ const Customers = () => {
   });
   const [searchTerm, setSearchTerm] = useState("");
   const [searchType, setSearchType] = useState("name");
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const fetchCustomers = useCallback(
     (page = 1) => {
       fetch(
-        `http://localhost:4000/api/customers/all-customers?page=${page}&limit=${meta.limit}`
+        `${apiUrl}/api/customers/all-customers?page=${page}&limit=${meta.limit}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -36,7 +37,7 @@ const Customers = () => {
         })
         .catch((err) => console.error("Error fetching customers:", err));
     },
-    [meta.limit]
+    [meta.limit, apiUrl]
   );
 
   useEffect(() => {
