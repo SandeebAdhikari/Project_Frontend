@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { Search, Plus, Edit, Trash2, Eye, UserCheck } from "lucide-react";
+import AddCustomerModal from "../components/AddCustomerModal";
 
 type Customer = {
   id: number;
@@ -15,6 +16,7 @@ type Customer = {
 
 const Customers = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [meta, setMeta] = useState({
     total: 0,
     page: 1,
@@ -57,10 +59,34 @@ const Customers = () => {
     return true;
   });
 
+  const handleAddCustomer = async (newCustomer: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    city: string;
+    country: string;
+  }) => {
+    try {
+      const res = await fetch(`${apiUrl}/api/customers`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newCustomer),
+      });
+      if (!res.ok) throw new Error("Failed to add customer");
+
+      fetchCustomers(meta.page);
+    } catch (err) {
+      console.error("Error adding customer:", err);
+    }
+  };
+
   return (
     <div className="sm:mx-11 p-6">
       <div className="mb-6 flex justify-end">
-        <button className="flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 hover:bg-gradient-to-br hover:from-gray-600 hover:via-gray-700 hover:to-gray-800 text-gray-400 font-medium hover:cursor-pointer border-r-1 border-b-1 border-gray-500">
+        <button
+          onClick={() => setShowAddModal(true)}
+          className="flex items-center gap-2 px-4 py-2 rounded-md bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 hover:bg-gradient-to-br hover:from-gray-600 hover:via-gray-700 hover:to-gray-800 text-gray-400 font-medium hover:cursor-pointer border-r-1 border-b-1 border-gray-500"
+        >
           <Plus size={16} />
           Add New Customer
         </button>
@@ -94,7 +120,7 @@ const Customers = () => {
         </select>
       </div>
 
-      <div className="border-r-1 border-b-1 border-gray-500 rounded-lg overflow-hidden bg-gradient-to-bl from-gray-700 via-gray-800 to-gray-950">
+      <div className="border-r-1 border-b-1 border-gray-500 rounded-lg overflow-hidden bg-gradient-to-t from-gray-900 via-gray-950 to-black ">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-gray-300">
             <thead className="bg-gradient-to-tr from-gray-700 via-gray-800 to-gray-950">
@@ -202,6 +228,12 @@ const Customers = () => {
           Next
         </button>
       </div>
+      {showAddModal && (
+        <AddCustomerModal
+          onClose={() => setShowAddModal(false)}
+          onAdd={handleAddCustomer}
+        />
+      )}
     </div>
   );
 };

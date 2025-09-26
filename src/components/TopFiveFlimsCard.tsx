@@ -27,7 +27,7 @@ const FlimsCard: React.FC<FlimCardProps> = ({ films, label }) => {
     <div className="sm:w-1/2 mt-4 p-4">
       <div
         onClick={() => setOpen(!open)}
-        className={`bg-gradient-to-bl border-r-1  border-gray-500 from-gray-700 via-gray-800 to-gray-950 flex flex-col items-center justify-center md:h-24 space-x-3 p-6 cursor-pointer transition-all duration-300
+        className={`border border-gray-700 hover:border-gray-600 bg-gradient-to-t from-gray-900 via-gray-950 to-black flex flex-col items-center justify-center md:h-24 space-x-3 p-6 cursor-pointer transition-all duration-300
         ${open ? "rounded-t-2xl" : "rounded-2xl"}`}
       >
         <div className="flex gap-2">
@@ -40,7 +40,7 @@ const FlimsCard: React.FC<FlimCardProps> = ({ films, label }) => {
       </div>
 
       {open && (
-        <div className="bg-black/20 p-2 rounded-b-2xl shadow-inner transition-all duration-500 cursor-pointer border-l-1 border-t-1 border-gray-500">
+        <div className="bg-black/20 p-2 rounded-b-2xl shadow-inner transition-all duration-500 cursor-pointer border border-gray-700">
           {films.length === 0 ? (
             <p className="text-gray-500">No films found</p>
           ) : (

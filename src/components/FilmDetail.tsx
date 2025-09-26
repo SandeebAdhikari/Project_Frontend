@@ -16,7 +16,7 @@ const FilmDetail: React.FC<{ film: FilmsDetail; onClose: () => void }> = ({
 }) => {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="relative bg-gradient-to-tl from-gray-transparent via-gray-950 to-gray-transparent border border-gray-800 rounded-xl p-6 w-[95%] max-w-5xl max-h-[90vh] overflow-y-auto">
+      <div className="relative backdrop-blur-sm border border-gray-600 sm:border-gray-700 rounded-xl p-6 w-[95%] max-w-5xl max-h-[90vh] overflow-y-auto">
         <button
           className="absolute top-4 right-4 text-gray-400 hover:text-white"
           onClick={onClose}
@@ -26,9 +26,9 @@ const FilmDetail: React.FC<{ film: FilmsDetail; onClose: () => void }> = ({
           <X className="w-6 h-6" />
         </button>
 
-        <div className="flex flex-col m-6 sm:mx-16 sm:flex-row gap-6 sm:gap-10">
-          <div className="flex justify-center">
-            <div className="flex flex-col items-center justify-center w-74 h-106 sm:w-84 sm:h-130 rounded-xl bg-gradient-to-t from-gray-700 via-gray-800 to-gray-950">
+        <div className="flex flex-col m-6 sm:flex-row gap-6 sm:gap-10 ">
+          <div className="flex justify-center rounded-lg  ">
+            <div className="flex flex-col items-center justify-center w-74 h-106 sm:w-84 sm:h-130 rounded-xl bg-gradient-to-t from-gray-700 via-gray-800 to-gray-950 sm:border-t sm:border-r  sm:border-gray-800 border border-gray-600">
               <div className="flex items-center justify-center w-14 h-14 mx-auto rounded-full mb-2 bg-gray-700 ">
                 <Play className="w-8 h-8 text-gray-400" />
               </div>

@@ -12,7 +12,7 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="p-6 fixed sm:py-6 sm:px-16 flex justify-between w-full items-center z-50 bg-gradient-to-b rounded-sm from-gray-500 via-gray-700 to-transparent">
+    <div className="p-6 fixed sm:py-6 sm:px-16 flex justify-between w-full items-center z-50 rounded-sm bg-gradient-to-b from-gray-900 via-gray-950 to-transparent">
       <div className="flex font-bold text-2xl items-center">
         <Film size={52} className="text-gray-400" />
         <div className="flex flex-col items-start">

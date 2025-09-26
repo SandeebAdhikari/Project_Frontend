@@ -40,7 +40,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
 
   return (
     <>
-      <div className="p-4 rounded-lg border-r-1 border-b-1 border-gray-500 bg-gradient-to-tl from-gray-700 via-gray-800 to-gray-950 hover:scale-105 hover:shadow-md shadow-gray-400">
+      <div className="p-4 rounded-lg border border-gray-700 bg-gradient-to-t from-gray-900 via-gray-950 to-black  hover:border-gray-600">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-bold text-gray-400">{film.title}</h2>
           <span className="inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full bg-gray-700 text-gray-400">

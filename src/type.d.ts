@@ -59,3 +59,15 @@ export type Customer = {
   activeRentals: number;
   totalRentals: number;
 };
+
+export type Staff = {
+  staff_id: number;
+  first_name: string;
+  last_name: string;
+  address: string;
+  email: string | null;
+  store_id: number;
+  active: boolean;
+  username: string;
+  last_update: string;
+};

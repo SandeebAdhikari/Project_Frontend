@@ -8,7 +8,7 @@ import RentOutPage from "./components/RentOutModal";
 
 const App = () => {
   return (
-    <div className="bg-gradient-to-bl from-gray-700 via-gray-800 to-gray-950 min-h-screen">
+    <div className="bg-gradient-to-t from-gray-900 via-gray-950 to-black min-h-screen">
       <NavBar />
       <div className="pt-24">
         <Routes>
@@ -23,12 +23,15 @@ const App = () => {
                     typeof FilmDetail
                   >["film"]
                 }
-                onClose={() => {}} // Replace with actual close handler
+                onClose={() => {}}
               />
             }
           />
           <Route path="/customers" element={<CustomersPage />} />
-          <Route path="/rentals/:id" element={<RentOutPage />} />
+          <Route
+            path="/rentals/:id"
+            element={<RentOutPage filmId={0} onClose={() => {}} />}
+          />
         </Routes>
       </div>
     </div>

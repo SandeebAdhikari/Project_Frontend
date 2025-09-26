@@ -1,27 +1,22 @@
 import React, { useState } from "react";
 import { Star } from "lucide-react";
+import type { Actor } from "../type";
+import TopActorTopFiveMovieModal from "./TopActorTopFiveMovieModal";
 
-type Actor = {
-  actor_id: number;
-  first_name: string;
-  last_name: string;
-  film_count: number;
-  rental_count: number;
-};
-
-interface ActorCardProps {
+interface TopActorCardProps {
   actors: Actor[];
   label: string;
 }
 
-const ActorCard: React.FC<ActorCardProps> = ({ actors, label }) => {
+const TopActorCard: React.FC<TopActorCardProps> = ({ actors, label }) => {
   const [open, setOpen] = useState(true);
+  const [selectedActor, setSelectedActor] = useState<Actor | null>(null);
 
   return (
     <div className="sm:w-1/2 mt-4 p-4">
       <div
         onClick={() => setOpen(!open)}
-        className={`bg-gradient-to-br border-l-1 border-b-1 border-gray-500 from-gray-700 via-gray-800 to-gray-950 flex flex-col items-center justify-center md:h-24 space-x-3 p-6 cursor-pointer transition-all duration-300
+        className={`border border-gray-700 hover:border-gray-600 bg-gradient-to-t from-gray-900 via-gray-950 to-black flex flex-col items-center justify-center md:h-24 space-x-3 p-6 cursor-pointer transition-all duration-300
         ${open ? "rounded-t-2xl " : "rounded-2xl "}`}
       >
         <div className="flex gap-2">
@@ -34,7 +29,7 @@ const ActorCard: React.FC<ActorCardProps> = ({ actors, label }) => {
       </div>
 
       {open && (
-        <div className="bg-black/20 p-2 rounded-b-2xl shadow-inner transition-all duration-500 cursor-pointer border-r-1  border-gray-500">
+        <div className="bg-black/20 p-2 rounded-b-2xl shadow-inner transition-all duration-500 cursor-pointer border border-gray-700">
           {actors.length === 0 ? (
             <p className="text-gray-500">No actors found</p>
           ) : (
@@ -42,6 +37,7 @@ const ActorCard: React.FC<ActorCardProps> = ({ actors, label }) => {
               {actors.map((actor, index) => (
                 <div
                   key={actor.actor_id}
+                  onClick={() => setSelectedActor(actor)}
                   className="flex justify-between p-4 hover:bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 hover:rounded-xl sm:h-24 sm:text-xl"
                 >
                   <div className="flex items-center gap-3">
@@ -71,8 +67,14 @@ const ActorCard: React.FC<ActorCardProps> = ({ actors, label }) => {
           )}
         </div>
       )}
+      {selectedActor && (
+        <TopActorTopFiveMovieModal
+          actor={selectedActor}
+          onClose={() => setSelectedActor(null)}
+        />
+      )}
     </div>
   );
 };
 
-export default ActorCard;
+export default TopActorCard;
