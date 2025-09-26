@@ -1,26 +1,10 @@
 import { useEffect, useState } from "react";
 import TopFiveFlimsCard from "../components/TopFiveFlimsCard";
 import TopActorCard from "../components/TopActorCard";
-
-type Film = {
-  category: string;
-  film_id: number;
-  rented: number;
-  title: string;
-  release_year: number;
-  rating: string;
-};
-
-type Actor = {
-  actor_id: number;
-  first_name: string;
-  last_name: string;
-  film_count: number;
-  rental_count: number;
-};
+import type { FilmTop, Actor } from "../type";
 
 const MainPage = () => {
-  const [films, setFilms] = useState<Film[]>([]);
+  const [films, setFilms] = useState<FilmTop[]>([]);
   const [actors, setActors] = useState<Actor[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -35,7 +19,7 @@ const MainPage = () => {
         if (!filmsRes.ok) throw new Error("Error fetching films");
         if (!actorsRes.ok) throw new Error("Error fetching actors");
 
-        const filmsData: Film[] = await filmsRes.json();
+        const filmsData: FilmTop[] = await filmsRes.json();
         const actorsData: Actor[] = await actorsRes.json();
 
         setFilms(filmsData);

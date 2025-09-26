@@ -1,19 +1,7 @@
 import { useEffect, useState } from "react";
 import FilmCard from "../components/FilmCard";
 import { Search } from "lucide-react";
-
-type Film = {
-  film_id: number;
-  title: string;
-  description: string;
-  release_year: number;
-  rating: string;
-  language: string;
-  length: number;
-  rental_rate: number;
-  category: string;
-  actors: string[];
-};
+import type { Film } from "../type";
 
 const FilmsPage = () => {
   const [films, setFilms] = useState<Film[]>([]);

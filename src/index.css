@@ -32,3 +32,32 @@
   background-clip: text;
   animation: shine 2.5s linear infinite;
 }
+
+@keyframes shine-border {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.shiny-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.shiny-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  border-radius: inherit;
+  background: linear-gradient(120deg, #a1a1aa 20%, #ffffff 40%, #a1a1aa 60%);
+  background-size: 200% auto;
+  animation: shine-border 2.5s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}

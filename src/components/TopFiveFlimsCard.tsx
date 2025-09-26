@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import { TrendingUp } from "lucide-react";
-import { Link } from "react-router-dom";
-
-type Film = {
-  category: string;
-  film_id: number;
-  rented: number;
-  title: string;
-  release_year: number;
-  rating: string;
-};
+import FilmDetail from "./FilmDetail";
+import type { FilmTop, FilmsDetail } from "../type";
 
 interface FlimCardProps {
-  films: Film[];
+  films: FilmTop[];
   label: string;
 }
 
 const FlimsCard: React.FC<FlimCardProps> = ({ films, label }) => {
   const [open, setOpen] = useState(true);
+  const [selectedFilm, setSelectedFilm] = useState<FilmsDetail | null>(null);
+  const apiUrl = import.meta.env.VITE_API_URL;
+
+  const handleSelectFilm = async (filmId: number) => {
+    try {
+      const res = await fetch(`${apiUrl}/api/films/${filmId}`);
+      const data: FilmsDetail = await res.json();
+      setSelectedFilm(data);
+    } catch (err) {
+      console.error("Error fetching film details:", err);
+    }
+  };
 
   return (
     <div className="sm:w-1/2 mt-4 p-4">
@@ -32,7 +36,7 @@ const FlimsCard: React.FC<FlimCardProps> = ({ films, label }) => {
             {label}
           </h2>
         </div>
-        <p className="text-gray-500">Most rented flims of all time</p>
+        <p className="text-gray-500">Most rented films of all time</p>
       </div>
 
       {open && (
@@ -42,9 +46,9 @@ const FlimsCard: React.FC<FlimCardProps> = ({ films, label }) => {
           ) : (
             <div>
               {films.map((film, index) => (
-                <Link
+                <div
                   key={film.film_id}
-                  to={`/films/${film.film_id}`}
+                  onClick={() => handleSelectFilm(film.film_id)}
                   className="flex justify-between p-4 hover:bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950 hover:rounded-xl sm:h-24 sm:text-xl"
                 >
                   <div className="flex items-center gap-3">
@@ -72,11 +76,15 @@ const FlimsCard: React.FC<FlimCardProps> = ({ films, label }) => {
                       <p className="text-xs text-gray-500">rentals</p>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           )}
         </div>
+      )}
+
+      {selectedFilm && (
+        <FilmDetail film={selectedFilm} onClose={() => setSelectedFilm(null)} />
       )}
     </div>
   );
