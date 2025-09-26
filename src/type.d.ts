@@ -36,3 +36,11 @@ export type Rental = {
   staff_id: number;
   last_update: string;
 };
+
+export type SearchableSelectProps<T> = {
+  apiUrl: string;
+  placeholder?: string;
+  queryKey?: string;
+  labelExtractor: (item: T) => string;
+  onSelect?: (item: T) => void;
+};

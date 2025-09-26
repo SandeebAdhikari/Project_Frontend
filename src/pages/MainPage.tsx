@@ -50,11 +50,19 @@ const MainPage = () => {
   }, [apiUrl]);
 
   if (loading) {
-    return <p>Loading films...</p>;
+    return (
+      <p className="mt-10 flex justify-center text-gray-400">
+        Loading films...
+      </p>
+    );
   }
 
   if (error) {
-    return <p className="error-message">{error}</p>;
+    return (
+      <p className="mt-10 flex justify-center text-gray-400 error-message">
+        {error}
+      </p>
+    );
   }
 
   return (

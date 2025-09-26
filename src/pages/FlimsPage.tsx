@@ -85,7 +85,7 @@ const FilmsPage = () => {
         ))}
       </div>
       {filteredFilms.length === 0 && (
-        <div className="text-center py-12">
+        <div className="flex text-center justify-center mt-12 text-gray-400">
           <p>No films found matching your search criteria.</p>
         </div>
       )}

@@ -1,11 +1,13 @@
-import { Calendar, Clock, Star } from "lucide-react";
-import type { Film } from "../type";
+import { Calendar, Clock, Star, User, Users } from "lucide-react";
+import type { Film, Customer } from "../type";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import SearchDropDown from "../components/SearchDropDown";
 
 const RentOutPage = () => {
   const { id } = useParams();
   const [film, setFilm] = useState<Film | null>(null);
+
   const apiUrl = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
@@ -15,12 +17,15 @@ const RentOutPage = () => {
       .catch((err) => console.error("Error fetching film:", err));
   }, [apiUrl, id]);
 
-  if (!film) return <p>Loading film...</p>;
+  if (!film)
+    return (
+      <p className="mt-10 flex justify-center text-gray-400">Loading film...</p>
+    );
 
   return (
-    <div className="flex flex-col sm:flex-row sm:gap-5 p-6 sm:p-4 sm:mx-16 ">
+    <div className="flex flex-col sm:flex-row sm:gap-5 p-6 sm:p-4 sm:mx-16">
       <div className="flex flex-col sm:w-1/2 p-6 rounded-lg border-r-1 border-b-1 border-gray-500 bg-gradient-to-tl from-gray-700 via-gray-800 to-gray-950">
-        <div className="flex font-bold  border-gray-700 items-center gap-1">
+        <div className="flex font-bold items-center gap-1">
           <span className="text-xl sm:text-3xl font-bold text-gray-400">
             {" "}
             {film.title}
@@ -50,23 +55,46 @@ const RentOutPage = () => {
           {film.description}
         </div>
 
-        <div className="mt-6 p-6 flex flex-col gap-2 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950  rounded-lg text-sm sm:text-lg">
+        <div className=" font-semibold mt-6 p-6 flex flex-col gap-2 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-950  rounded-lg text-sm sm:text-lg text-gray-300">
           <div className="flex justify-between">
-            <span className=""> Rates:</span>
-            <span className="">{film.rental_rate}/day</span>
+            <span> Rates:</span>
+            <span>{film.rental_rate}/day</span>
           </div>
           <div className="flex justify-between">
-            <span className=""> Duration:</span>
-            <span className="">{film.rental_duration} days</span>
+            <span> Duration:</span>
+            <span>{film.rental_duration} days</span>
           </div>
           <div className="flex justify-between">
-            <span className="">Available: </span>
-            <span className="">{film.available}</span>
+            <span>Available: </span>
+            <span>{film.available}</span>
           </div>
         </div>
       </div>
       <div className="mt-6 flex flex-col sm:mt-0 sm:w-1/2 p-6 rounded-lg border-r-1 border-b-1 border-gray-500 bg-gradient-to-tl from-gray-700 via-gray-800 to-gray-950">
-        <div></div>
+        <div className="relative border border-gray-500 rounded-lg px-4 mt-3">
+          <div className="absolute top-[-14px] left-24 sm:top-[-18px] sm:left-36 flex font-bold  items-center gap-1 bg-gradient-to-b from-gray-transparent via-gray-800 to-gray-transparent">
+            <span className="text-xl sm:text-3xl font-bold text-gray-400 ">
+              RENTAL CHECKOUT
+            </span>
+          </div>
+          <div className="mt-5 flex items-center gap-1">
+            <User className=" w-4 h-4 sm:w-5 sm:h-5" />
+            <h2 className="text-sm sm:text-lg text-gray-400 font-semibold">
+              Select Customer
+            </h2>
+          </div>
+          <SearchDropDown<Customer>
+            apiUrl={`${apiUrl}/api/customers/search`}
+            placeholder="Search customer..."
+            queryKey="q"
+            labelExtractor={(c) => `${c.firstName} ${c.lastName}`}
+            onSelect={(c) => console.log("Selected customer:", c)}
+          />
+          <div className="mt-4 ">
+            <Users className="w-4 h-4 sm:w-5 sm:h-5" />
+            <div className=""></div>
+          </div>
+        </div>
       </div>
     </div>
   );
