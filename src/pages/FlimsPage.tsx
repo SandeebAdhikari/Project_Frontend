@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import FilmCard from "../components/FilmCard";
 import { Search } from "lucide-react";
-import type { Film } from "../type";
+import type { FilmList } from "../type";
 
 const FilmsPage = () => {
-  const [films, setFilms] = useState<Film[]>([]);
+  const [films, setFilms] = useState<FilmList[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchType, setSearchType] = useState("film");
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -12,7 +12,7 @@ const FilmsPage = () => {
   useEffect(() => {
     fetch(`${apiUrl}/api/films/all-films`)
       .then((res) => res.json())
-      .then((data: Film[]) => setFilms(data))
+      .then((data: FilmList[]) => setFilms(data))
       .catch((err) => console.error("Error fetching films:", err));
   }, [apiUrl]);
 
